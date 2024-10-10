@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Smiley Face</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffffff; 
+        }
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="400" height="400"></canvas>
+
+    <script>
+        // Get the canvas element
+        var canvas = document.getElementById('myCanvas');
+        var ctx = canvas.getContext('2d');
+
+        // Set the background color
+        ctx.fillStyle = '#98fb98'; 
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Draw the face (yellow circle)
+        ctx.beginPath();
+        ctx.arc(200, 200, 160, 0, Math.PI * 2, true); // Outer circle
+        ctx.fillStyle = 'yellow'; // Face color
+        ctx.fill();
+        ctx.stroke();
+
+        // Draw the eyes (black circles)
+        ctx.beginPath();
+        ctx.arc(130, 150, 13, 0, Math.PI * 2, true);  // Left eye
+        ctx.arc(260, 150, 13, 0, Math.PI * 2, true);  // Right eye
+        ctx.fillStyle = 'black'; // Eye color
+        ctx.fill();
+
+        // Draw the nose (vertical line)
+        ctx.beginPath();
+        ctx.moveTo(200, 190);
+        ctx.lineTo(200, 235);
+        ctx.strokeStyle = 'black'; // Nose color
+        ctx.stroke();
+
+        // Draw the mouth (smiling arc)
+        ctx.beginPath();
+        ctx.arc(200, 250, 70, 0, Math.PI, false);  // Mouth (clockwise)
+        ctx.stroke();
+
+        // Draw the text below the face
+        ctx.font = 'bold 20px Arial';
+        ctx.fillStyle = '#355e3b'; // Text color
+        ctx.textAlign = 'center';
+        ctx.fillText('The Canvas brought me to life!', 200, 380);
+    </script>
+</body>
+</html>
